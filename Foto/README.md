@@ -14,18 +14,16 @@
 
 ## Project Structure
 
-- `index.html`: Main portal and React application.
-- `A1 Menschen.html`, `A1 Netzwerk.html`, `A2 Netzwerk.html`, `B1 Netzwerk.html`: Course content pages.
-- `Gespräch.html`: German conversation practice page.
-- `dos-invoice-system.html`: Invoice template.
-- `dos-receipt-system.html`: Cash receipt template.
-- `dos-share-logo.svg`: Social sharing and Open Graph image.
+- `../index.html`: Main portal and React application.
+- `../HTML/`: Course content pages and invoice/receipt templates.
+- `./manifest.webmanifest` and `./DOS Logo.png`: PWA manifest and app logo.
+- `../service-worker.js`: Root-scoped service worker.
 - `supabase/`: Supabase Edge Functions.
 - `*.sql`: Database migrations and Row Level Security policies.
 
 ## Local Use
 
-The portal is a static HTML application and can be served with any static web server. From this directory, for example:
+The portal is a static HTML application and can be served with any static web server. From the repository root, for example:
 
 ```powershell
 python -m http.server 8080
@@ -34,7 +32,7 @@ python -m http.server 8080
 Then open:
 
 ```text
-http://localhost:8080/index.html
+http://localhost:8080/
 ```
 
 Opening the file directly may work for the basic UI, but a local web server is recommended for Supabase requests, iframe content, and browser security rules.
@@ -101,7 +99,7 @@ Deploy `supabase/functions/send-landing-application-email/index.ts` and configur
 
 ## GitHub Pages
 
-The repository can be published as a static GitHub Pages site. Keep all linked HTML files and `dos-share-logo.svg` in the published directory. The Open Graph metadata in `index.html` points to:
+The repository can be published as a static GitHub Pages site. Keep the root `index.html`, `HTML/`, `Foto/`, and `service-worker.js` in the published directory. The Open Graph metadata points to the logo in `Foto/`:
 
 ```text
 https://dos-info-eg.github.io/Drei-Online-Spezialisten/
@@ -111,10 +109,10 @@ After publishing, social platforms may cache the previous preview image. Re-scra
 
 ## Install as a phone app (PWA)
 
-The portal includes PWA support through `manifest.webmanifest`, `service-worker.js`, and `dos-app-icon.svg`.
+The portal includes PWA support through `Foto/manifest.webmanifest`, `service-worker.js`, and `Foto/DOS Logo.png`.
 
 1. Publish the complete `DOS Web` folder on GitHub Pages or another host with HTTPS.
-2. Open the published `index.html` URL in Chrome on Android, then choose **Install DOS Web** or **Add to Home screen**.
+2. Open the published site URL in Chrome on Android, then choose **Install DOS Web** or **Add to Home screen**.
 3. On iPhone, open the URL in Safari, tap **Share**, then choose **Add to Home Screen**.
 
 The app shell is cached after the first visit, so the interface can open without a connection. Login, Supabase data, realtime updates, and remote CDN libraries still require internet access.

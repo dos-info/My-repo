@@ -64,11 +64,15 @@
     }
 
     .brand-logo {
-      display:flex;
-      align-items:flex-end;
-      gap: 0;
-      line-height: 0.7;
-      transform: translateY(2px);
+      display:block;
+      width:132px;
+      flex:none;
+    }
+
+    .brand-logo img {
+      display:block;
+      width:100%;
+      height:auto;
     }
 
     .dos-char {
@@ -547,11 +551,7 @@
   <div class="page">
     <div class="toolbar">
       <div class="brand">
-        <div class="brand-logo" aria-label="DOS logo">
-          <span class="dos-char dos-gold">S</span>
-          <span class="dos-char dos-red">O</span>
-          <span class="dos-char dos-black">D</span>
-        </div>
+        <div class="brand-logo"><img src="../Foto/dos-wave-mark.svg" alt="DOS logo" /></div>
         <div class="brand-copy">
           <h2><span class="dos-word">DOS</span> <span class="red">Drei</span> <span class="gold">Online</span><br /><span class="dos-word">Spezialisten</span></h2>
           <div class="sub"></div>
@@ -569,7 +569,7 @@
       <div class="receipt" id="receiptSheet">
         <div class="header-row">
           <div class="header-left">
-            <img id="receiptLogo" class="receipt-logo" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 260 100'%3E%3Crect width='260' height='100' rx='18' fill='%230B1F3A'/%3E%3Ctext x='130' y='60' text-anchor='middle' font-family='Arial, sans-serif' font-size='52' font-weight='900' fill='%23E3A825'%3EDOS%3C/text%3E%3C/svg%3E" alt="DOS logo" />
+            <img id="receiptLogo" class="receipt-logo" src="../Foto/dos-wave-mark.svg" alt="DOS logo" />
             <div>
               <div class="academy-name">DOS — Drei Online Spezialisten</div>
               <div class="academy-sub">أكاديمية تعليم اللغة الألمانية</div>
@@ -685,7 +685,7 @@
 
   <script>
     const DRAFT_KEY = 'dos-receipt-current-draft';
-    const DEFAULT_RECEIPT_LOGO = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 260 100'%3E%3Crect width='260' height='100' rx='18' fill='%230B1F3A'/%3E%3Ctext x='130' y='60' text-anchor='middle' font-family='Arial, sans-serif' font-size='52' font-weight='900' fill='%23E3A825'%3EDOS%3C/text%3E%3C/svg%3E";
+    const DEFAULT_RECEIPT_LOGO = '../Foto/dos-wave-mark.svg';
 
     function todayISO() {
       return new Date().toISOString().slice(0, 10);

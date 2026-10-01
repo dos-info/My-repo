@@ -1,9 +1,9 @@
-const CACHE_NAME = "dos-web-shell-v5";
+const CACHE_NAME = "dos-web-shell-v8";
 const APP_SHELL = [
-  "../",
-  "../index.html",
-  "../Foto/manifest.webmanifest",
-  "../Foto/dos-wave-mark.svg"
+  "./",
+  "./index.html",
+  "./Foto/manifest.webmanifest",
+  "./Foto/dos-wave-mark.svg"
 ];
 
 self.addEventListener("install", (event) => {
@@ -33,7 +33,7 @@ self.addEventListener("fetch", (event) => {
           caches.open(CACHE_NAME).then((cache) => cache.put(event.request, responseToCache));
         }
         return networkResponse;
-      }).catch(() => caches.match("../index.html"));
+      }).catch(() => caches.match("./index.html"));
     })
   );
 });
