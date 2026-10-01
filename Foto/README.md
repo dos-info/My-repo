@@ -76,6 +76,16 @@ npx supabase functions deploy manage-users --project-ref YOUR_PROJECT_REF
 
 The function requires Supabase's standard environment variables. `SUPABASE_SERVICE_ROLE_KEY` must remain server-side and must never be placed in `index.html`.
 
+## Protect digital library files
+
+Deploy the authenticated content stream, then run `Supabase File/supabase_library_content_protection_migration.sql` in the Supabase SQL Editor. The migration makes the `course-library` bucket private, removes direct file-read policies, and preserves paper downloads only when permitted.
+
+```powershell
+npx supabase functions deploy library-content --no-verify-jwt --project-ref YOUR_PROJECT_REF
+```
+
+The function validates the user's Supabase session and library permission itself. The service-role key stays in Supabase and is never sent to the browser. Previously issued signed links may remain usable until their one-hour expiry; newly refreshed library entries no longer receive signed links.
+
 ## Landing application email
 
 Run `supabase_landing_applications_migration.sql` before using the public reservation form. The form stores one application per normalized email, shows the request only to authorized portal users, and sends a confirmation email through:

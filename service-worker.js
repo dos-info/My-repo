@@ -1,4 +1,4 @@
-const CACHE_NAME = "dos-web-shell-v8";
+const CACHE_NAME = "dos-web-shell-v9";
 const APP_SHELL = [
   "./",
   "./index.html",

@@ -672,7 +672,8 @@ function initQuickWriter(){
   const clearBtn = document.getElementById('quick-write-clear');
   if(!toggle || !panel || !area || !saveBtn || !clearBtn) return;
 
-  const saved = localStorage.getItem('dos-b1-notes') || '';
+  let saved = '';
+  try { saved = localStorage.getItem('dos-b1-notes') || ''; } catch (error) {}
   area.value = saved;
 
   toggle.addEventListener('click', (e)=>{
@@ -682,13 +683,13 @@ function initQuickWriter(){
   });
 
   saveBtn.addEventListener('click', ()=>{
-    localStorage.setItem('dos-b1-notes', area.value);
+    try { localStorage.setItem('dos-b1-notes', area.value); } catch (error) {}
     panel.classList.add('hidden');
   });
 
   clearBtn.addEventListener('click', ()=>{
     area.value = '';
-    localStorage.removeItem('dos-b1-notes');
+    try { localStorage.removeItem('dos-b1-notes'); } catch (error) {}
   });
 
   panel.addEventListener('click', (e)=> e.stopPropagation());
